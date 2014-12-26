@@ -48,7 +48,10 @@ before_script:
   - echo "$TEST_TIMEZONE"
 
 # execute phpunit as the script command
-script: "php -d date.timezone=$TEST_TIMEZONE -d memory_limit=-1 vendor/bin/phpunit -c $TEST_CONFIG"
+script:
+  - "php -d date.timezone=$TEST_TIMEZONE -d memory_limit=-1 vendor/bin/phpunit -c $TEST_CONFIG &"
+  - free -m
+  - mysqladmin extended -i10 -r
 
 # disable mail notifications
 notification:
