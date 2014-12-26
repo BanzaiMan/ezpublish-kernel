@@ -1,5 +1,11 @@
 language: php
 
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 # run tests on php misc php versions
 php:
   - 5.5
